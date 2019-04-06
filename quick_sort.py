@@ -1,5 +1,4 @@
 import file_reader as fr
-import threading, sys, resource
 
 
 class PivotType:
@@ -39,10 +38,8 @@ def partition(array, pivot_type, k, l):
     array[k] = pivot
 
     i = k + 1
-
     for j in range(k, l):
         cur = array[j]
-
         if cur < pivot:
             array[j] = array[i]
             array[i] = cur
