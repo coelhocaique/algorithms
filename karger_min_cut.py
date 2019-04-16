@@ -1,76 +1,55 @@
 import file_reader as reader
-import random
+import random, sys
 
 
-def choose_edge_randomly(n_len, adj_dict):
-    rand = random.randint(1, n_len)
-    u = list(adj_dict.keys())[rand - 1]
-    v = adj_dict.get(u)
-    v_index = -1
-    while v == -1 or v[v_index - 1] == u:
-        v_index = random.randint(1, len(v))
+def choose_edge_randomly(n_len, g):
+    u_rand = random.randint(0, n_len-1)
+    u = list(g.keys())[u_rand]
+    v = g.get(u)
+    v_index = random.randint(0, len(v)-1)
+    return u, v[v_index]
 
-    return u, v[v_index - 1]
+def remove_self_loops(u, v, u_edges):
+    return [e for e in u_edges if e != u and e != v]
 
+def contract(u, v, g):
+    u_edges = g.pop(u, None)
+    v_edges = g.pop(v, None)
 
-def contract(u, v, adj_dict):
-    u_list = adj_dict.get(u)
-    v_list = adj_dict.pop(v, None)
+    # fuse nodes
+    u_edges+= v_edges
 
-    # fuse lists
-    u_list+= v_list
+    # point v edges to u
+    for key in g.keys():
+        if key != u and key != v:
+            edges = g.get(key)
+            g[key] = [u if e == v else e for e in edges]
 
-    to_remove = []
-    index = 0
     # remove self loops
-    while index < len(u_list):
-        if u_list[index] == v or u_list[index] == u:
-            del u_list[index]
-        index+=1
+    g[u] = remove_self_loops(u, v, u_edges)
 
-    # change index in adj list of v
-    for key in adj_dict.keys():
-        adj = adj_dict.get(key)
-        if adj:
-            for i in range(len(adj)):
-                if adj[i] == v:
-                    adj[i] = u
+    return g
 
+def get_number_of_edges(g):
+    keys = list(g.keys())
+    return len(g.get(keys[0]))
 
-def get_number_of_edges(adj_dict):
-    output = []
-    edges = 0
-
-    for key in adj_dict.keys():
-        adj_list = list(adj_dict.get(key))
-        for d in adj_list:
-            output.append([key, d])
-            edges+=1
-
-    return output, edges // 2
-
-
-def get_min_cut(adj_dict):
-    n_len = len(adj_dict.keys())
-
+def get_min_cut(g):
+    n_len = len(g.keys())
     while n_len > 2:
-        #print(adj_dict)
-        u, v = choose_edge_randomly(n_len, adj_dict)
-        #print('%g u=%g, v=%g chosen' % (n_len, u, v))
+        u, v = choose_edge_randomly(n_len, g)
         # contract from u to v
-        contract(u, v, adj_dict)
-        n_len = len(adj_dict.keys())
+        g = contract(u, v, g)
+        n_len-=1
 
-    return get_number_of_edges(adj_dict)
+    return get_number_of_edges(g)
 
+min_cut = sys.maxsize
 
-#adj_dict = reader.get_dict_as_adj_list(reader.FilePath.MIN_CUT)
-# adj_dict = {1:[2, 3], 2:[1, 3, 4], 3:[1, 2, 4], 4:[2, 3]}
-min_cut = 1_000_000_000_0000
-
-for i in range(10):
-    edges, min_cut_cur = get_min_cut(reader.get_dict_as_adj_list(reader.FilePath.MIN_CUT))
-    print('iteration %g , min_cut=%g' % (i, min_cut_cur))
+for i in range(100):
+    g = reader.get_dict_as_adj_list(reader.FilePath.MIN_CUT)
+    min_cut_cur = get_min_cut(g)
+    print('iteration %g min_cut=%g' % (i, min_cut_cur))
     min_cut = min(min_cut, min_cut_cur)
 
 print('min_cut: %g' % min_cut)
