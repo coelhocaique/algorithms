@@ -61,11 +61,15 @@ def compute_scc(g, finishing_times, vertices, visited):
 def compute_answer(leaders):
     aux = []
     for k in leaders.keys():
-        aux.append(str(len(leaders.get(k))))
+        aux.append(len(leaders.get(k)))
 
     aux.sort(reverse=True)
+    out = [0] * 5
+    for i in range(len(out)):
+        if i < len(aux):
+            out[i] = str(aux[i])
 
-    return ','.join(aux)
+    return ','.join(out)
 
 
 def scc():
@@ -76,4 +80,9 @@ def scc():
     return compute_answer(leaders_dict)
 
 
-print(scc())
+def main():
+    print(scc())
+
+
+thread = threading.Thread(target=main)
+thread.start()
