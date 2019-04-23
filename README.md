@@ -4,7 +4,7 @@
 
 * [Python 3+](https://www.python.org/downloads/release/python-372/)
 
-### Solutions
+## Solutions
 
 #### Divide and Conquer, Sorting and Searching, and Randomized Algorithms
 * [Counting Inversions](https://github.com/coelhocaique/algorithms/blob/master/merge_sort.py) 
