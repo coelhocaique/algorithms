@@ -7,6 +7,7 @@ class FilePath:
     COMPARISONS = '/comparisons.txt'
     MIN_CUT = '/min_cut.txt'
     SCC = '/scc.txt'
+    DIJKSTRA = '/dijkstra.txt'
 
 
 def read_file(filename):
@@ -65,3 +66,11 @@ def read_scc_input(filename):
         nodes.add(dst)
 
     return g, g_inverted, len(nodes)
+
+
+def read_dijkstra_input(filename):
+    lines = read_file(filename)
+    lines = map(lambda s: re.sub('\s+', ' ', str(s.strip('\r\n'))).strip(), lines)
+    lines = map(lambda s: s.split(' '), lines)
+    return lines
+

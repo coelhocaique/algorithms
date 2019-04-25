@@ -13,3 +13,4 @@
 #### Graph Search, Shortest Paths, and Data Structures
 * [Karger's Minimum Cut](https://github.com/coelhocaique/algorithms/blob/master/karger_min_cut.py) 
 * [Kosaraju's Strongly Connected Components](https://github.com/coelhocaique/algorithms/blob/master/kosaraju_scc.py)
+* [Dijkstra's Shortest paths](https://github.com/coelhocaique/algorithms/blob/master/dijkstra.py)
