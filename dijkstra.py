@@ -1,11 +1,22 @@
-import file_reader as fr
+# Your task is to run Dijkstra's shortest-path algorithm on this graph, using 1 (the first vertex)
+# as the source vertex, and to compute the shortest-path distances between 1 and every other vertex of the graph.
+# a vertex vv and vertex 1, we'll define the shortest-path distance between 1 and vv to be 1000000.
+# If there is no path between you should report the shortest-path distances to the following ten vertices,
+# in order: 7,37,59,82,99,115,133,165,188,197.
+# You should encode the distances as a comma-separated string of integers.
+# So if you find that all ten of these vertices except 115 are at distance 1000 away from vertex
+# 1 and 115 is 2000 distance away, then your answer should be 1000,1000,1000,1000,1000,2000,1000,1000,1000,1000.
+# Remember the order of reporting DOES MATTER, and the string should be in the same order in which the above
+# ten vertices are given. The string should not contain any spaces.
+
+from file_reader import *
 from queue import PriorityQueue
 
 
 def get_data():
     g = {}
     vertices = set()
-    lines = fr.read_dijkstra_input(fr.FilePath.DIJKSTRA)
+    lines = map(lambda s: s.split(), read_input(FilePath.DIJKSTRA))
 
     for line in lines:
         edges = []
@@ -21,13 +32,15 @@ def get_data():
     return g, len(vertices)
 
 
-def shortest_path(g, vertices, source):
-    dist = [1000000] * (vertices + 1)
+def compute_answer(shortest_paths, reported_vertices):
+    return ','.join([str(shortest_paths[v]) for v in reported_vertices])
+
+
+def dijkstra_shortest_path(g, vertices, source, default_distance=1000000):
+    distance = [default_distance] * (vertices + 1)
     visited = [False] * (vertices + 1)
-
     pq = PriorityQueue()
-
-    dist[source] = 0
+    distance[source] = 0
 
     while vertices > 0:
         edges = g.get(source)
@@ -35,35 +48,23 @@ def shortest_path(g, vertices, source):
 
         for edge in edges:
             v, length = edge[0], edge[1]
-            length = dist[source] + length
+            length = distance[source] + length
             pq.put((length, v))
 
         pool = True
         while pool and pq.qsize() > 0:
             length, v = pq.get()
             if not visited[v]:
-                dist[v] = length
+                distance[v] = length
                 source = v
                 pool = False
 
-        vertices-=1
+        vertices -= 1
 
-    return dist
-
-
-def dijkstra(reported_vertices):
-    g, vertices = get_data()
-    paths = shortest_path(g, vertices, 1)
-    out = []
-
-    for r in reported_vertices:
-        out.append(str(paths[r]))
-
-    return dist, out
+    return distance
 
 
-to_report = [7, 37, 59, 82, 99, 115, 133, 165, 188, 197]
+data, num_nodes = get_data()
+shortest_paths = dijkstra_shortest_path(data, num_nodes, 1)
 
-dist, result = dijkstra(to_report)
-
-print(','.join(result))
+print(compute_answer(shortest_paths, [7, 37, 59, 82, 99, 115, 133, 165, 188, 197]))

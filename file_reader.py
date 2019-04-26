@@ -17,29 +17,10 @@ def read_file(filename):
     return lines
 
 
-def get_input_as_list(filename):
-    output = []
-    file = open(os.path.abspath('data') + filename, 'r')
-    while True:
-        line = file.readline()
-        if not line:
-            break
-        output.append(int(line))
-
-    return output
-
-
-def get_dict_as_adj_list(filename):
-    adj_list = dict()
+def read_input(filename):
     lines = read_file(filename)
-
     lines = map(lambda s: re.sub('\s+', ' ', str(s.strip('\r\n'))).strip(), lines)
-    lines = map(lambda s: s.split(' '), lines)
-
-    for line in lines:
-        adj_list[int(line[0])] = list(map(lambda s: int(s), line[1:]))
-
-    return adj_list
+    return lines
 
 
 def read_scc_input(filename):
@@ -66,11 +47,4 @@ def read_scc_input(filename):
         nodes.add(dst)
 
     return g, g_inverted, len(nodes)
-
-
-def read_dijkstra_input(filename):
-    lines = read_file(filename)
-    lines = map(lambda s: re.sub('\s+', ' ', str(s.strip('\r\n'))).strip(), lines)
-    lines = map(lambda s: s.split(' '), lines)
-    return lines
 
