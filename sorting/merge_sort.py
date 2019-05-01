@@ -1,4 +1,4 @@
-from file_reader import *
+from utils.file_reader import *
 
 
 def get_data():

@@ -1,9 +1,9 @@
-from file_reader import *
+from utils.file_reader import *
 import random, sys
 
 
 def get_data():
-    lines = map(lambda s: s.plit(), read_input(FilePath.SCC))
+    lines = map(lambda s: s.split(), read_input(FilePath.MIN_CUT))
     g = {}
 
     for line in lines:

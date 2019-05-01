@@ -1,4 +1,4 @@
-import file_reader as fr
+from utils import file_reader as fr
 
 
 class PivotType:
