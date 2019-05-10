@@ -1,4 +1,7 @@
-from queue import PriorityQueue
+import sys
+sys.path.append("..")
+
+from trees.heaps import PriorityQueue
 from utils.file_reader import *
 
 
@@ -32,7 +35,7 @@ def compute_answer(shortest_paths, reported_vertices):
 def dijkstra_shortest_path(g, vertices, source, default_distance=1000000):
     distance = [default_distance] * (vertices + 1)
     visited = [False] * (vertices + 1)
-    pq = PriorityQueue()
+    pq = PriorityQueue(mode='min')
     distance[source] = 0
 
     while vertices > 0:
@@ -42,11 +45,11 @@ def dijkstra_shortest_path(g, vertices, source, default_distance=1000000):
         for edge in edges:
             v, length = edge[0], edge[1]
             length = distance[source] + length
-            pq.put((length, v))
-
+            pq.add((length, v))
+        
         pool = True
-        while pool and pq.qsize() > 0:
-            length, v = pq.get()
+        while pool and pq.size() > 0:
+            length, v = pq.poll()
             if not visited[v]:
                 distance[v] = length
                 source = v

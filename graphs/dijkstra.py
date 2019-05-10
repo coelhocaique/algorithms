@@ -1,5 +1,6 @@
-from ..utils.file_reader import *
 import sys
+sys.path.append("..")
+from utils.file_reader import *
 
 
 def nodes_to_report():
