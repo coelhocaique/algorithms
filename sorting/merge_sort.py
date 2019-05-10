@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 from utils.file_reader import *
 
 

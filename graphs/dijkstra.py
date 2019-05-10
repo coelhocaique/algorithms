@@ -1,4 +1,4 @@
-from utils.file_reader import *
+from ..utils.file_reader import *
 import sys
 
 
