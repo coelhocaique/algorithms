@@ -8,6 +8,7 @@ class FilePath:
     MIN_CUT = '/min_cut.txt'
     SCC = '/scc.txt'
     DIJKSTRA = '/dijkstra.txt'
+    MEDIAN_MAINTENANCE = '/median.txt'
 
 
 def read_file(filename):
