@@ -15,4 +15,5 @@
 * [Kosaraju's Strongly Connected Components](https://github.com/coelhocaique/algorithms/blob/master/graphs/kosaraju_scc.py) - O(m + n)
 * [Dijkstra's Shortest paths](https://github.com/coelhocaique/algorithms/blob/master/graphs/dijkstra.py) - O(n*m)
 * [Dijkstra's Shortest paths Heap](https://github.com/coelhocaique/algorithms/blob/master/graphs/dijkstra_heap.py) - O(m log n)
+* [Median Maintenance](https://github.com/coelhocaique/algorithms/blob/master/trees/median_maintenance.py) - O(n log n)
 
