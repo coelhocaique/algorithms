@@ -9,6 +9,7 @@ class FilePath:
     SCC = '/scc.txt'
     DIJKSTRA = '/dijkstra.txt'
     MEDIAN_MAINTENANCE = '/median.txt'
+    TWO_SUM = '/2sum.txt'
 
 
 def read_file(filename):

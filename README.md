@@ -16,4 +16,5 @@
 * [Dijkstra's Shortest paths](https://github.com/coelhocaique/algorithms/blob/master/graphs/dijkstra.py) - O(n*m)
 * [Dijkstra's Shortest paths Heap](https://github.com/coelhocaique/algorithms/blob/master/graphs/dijkstra_heap.py) - O(m log n)
 * [Median Maintenance](https://github.com/coelhocaique/algorithms/blob/master/trees/median_maintenance.py) - O(n log n)
+* [2 Sum Algorithm](https://github.com/coelhocaique/algorithms/blob/master/hash/two_sum.py) - O(n)
 
