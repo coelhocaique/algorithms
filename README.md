@@ -19,4 +19,4 @@
 * [2 Sum Algorithm](https://github.com/coelhocaique/algorithms/blob/master/hash/two_sum.py) - O(n)
 
 #### Greedy Algorithms, Minimum Spanning Trees and Dynamic Programming
-[Scheduling Jobs](https://github.com/coelhocaique/algorithms/blob/master/greedy/scheduling_jobs.py) - O(n log n)
+* [Scheduling Jobs](https://github.com/coelhocaique/algorithms/blob/master/greedy/scheduling_jobs.py) - O(n log n)
