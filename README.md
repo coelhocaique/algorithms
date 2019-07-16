@@ -20,3 +20,4 @@
 
 #### Greedy Algorithms, Minimum Spanning Trees and Dynamic Programming
 * [Scheduling Jobs](https://github.com/coelhocaique/algorithms/blob/master/greedy/scheduling_jobs.py) - O(n log n)
+* [Prim's MST MST](https://github.com/coelhocaique/algorithms/blob/master/greedy/mst_prim.py) - O(m log n)
