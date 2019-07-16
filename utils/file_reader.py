@@ -10,7 +10,7 @@ class FilePath:
     DIJKSTRA = '/dijkstra.txt'
     MEDIAN_MAINTENANCE = '/median.txt'
     TWO_SUM = '/2sum.txt'
-    JOBS = '/jobs1.txt'
+    JOBS = '/jobs.txt'
     MST_PRIM = '/edges.txt'
 
 
