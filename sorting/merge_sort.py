@@ -7,6 +7,18 @@ def get_data():
     return list(map(lambda s: int(s), read_input(FilePath.INVERSIONS)))
 
 
+"""
+    Runs merge sort counting the number of inversions
+    
+    Given an array splitted in half, consider i, j = 0, N/2. An inversion is counted when i > j.
+    
+    So the algorithm is divided in three parts:
+    
+     * Left inversions - when i,j <= N/2
+     * Right inversions - when i,j > N/2
+     * Splitted inversions - when i <= N/2 < j
+    
+"""
 def merge_sort(data):
 
     def split(left, right):
