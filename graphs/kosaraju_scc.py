@@ -1,4 +1,17 @@
-# Strongly connected components Kosaraju's algorithm
+""" 
+    Strongly connected components Kosaraju's algorithm
+    
+    The idea of this algorithm is basically to run DFS twice, the first one computing the finishing time of each node, 
+    and the second one computing the strong connected components.
+    
+    The algorithm always iterates the nodes in decreasing order, and after finihing times are computed, 
+    a transpose of the graph is generated with these finishing times replacing the original value of the nodes, 
+    doing so, in the second iteration the graph begins with the last computed finishing time instead of the last node.
+    
+    This process is needed to DFS not explore all the nodes at once and being able to correctly find the SCCs of the graph.
+    
+    In this particular exercise, the task is to print the 5 largest connected components of the graph.
+"""
 from utils.file_reader import *
 import sys, threading
 sys.setrecursionlimit(800000)
