@@ -1,3 +1,14 @@
+""" 
+    Dijkstra's algorithm
+    
+    Implementation of the straighforward solution of Dijkstra's algorithm to compute shortest path in 
+    the given graph.
+    
+    In this particular exercise, the task is to find the shortest path from the first vertex to all other 
+    vertices of the graph and then report the shortest path distance calculated for the nodes below:
+    7, 37, 59, 82, 99, 115, 133, 165, 188, 197
+"""
+
 import sys
 sys.path.append("..")
 from utils.file_reader import *
