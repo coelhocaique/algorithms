@@ -9,10 +9,10 @@
  The heap has basically two operations:
  
  * INSERTION AND BUBBLE UP - appends the new element to the end of the heap and bubbles up the new element
- until the key property is restored ( new elements > its parent )
+ until the heap property is restored ( new elements > its parent )
  
  * EXTRACT MIN AND BUBBLE DOWN - extract the first element of the queue, switches the last element to first position and bubbles down
- until the key property is restored ( parent < children)
+ until the heap property is restored ( parent < children)
  
  Each operation produces a O(log n) runtime, which in the end will run in a O(nlogn) constant time.
     
