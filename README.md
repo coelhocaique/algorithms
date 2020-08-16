@@ -17,6 +17,7 @@
 * [Dijkstra's Shortest paths Heap](https://github.com/coelhocaique/algorithms/blob/master/graphs/dijkstra_heap.py) - O(m log n)
 * [Median Maintenance](https://github.com/coelhocaique/algorithms/blob/master/trees/median_maintenance.py) - O(n log n)
 * [2 Sum Algorithm](https://github.com/coelhocaique/algorithms/blob/master/hash/two_sum.py) - O(n)
+* [Binary Search Tree](https://github.com/coelhocaique/algorithms/blob/master/trees/binary_search_tree.py) - average operations O(height)
 
 
 #### Greedy Algorithms, Minimum Spanning Trees and Dynamic Programming
