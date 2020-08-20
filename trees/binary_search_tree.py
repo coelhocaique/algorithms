@@ -10,6 +10,7 @@ import math
 
 
 class BinarySearchTree:
+
     def __init__(self):
         self.__tree = dict()
         self.highest_index = 0
@@ -97,11 +98,11 @@ class BinarySearchTree:
     """
        Recursive function to compute predecessor
     """
-    def __predecessor_recur(self, index):
+    def __predecessor(self, index):
         if index % 2 > 0:
             return self.parent(index)
 
-        return self.__predecessor_recur(self.parent(index)[0])
+        return self.__predecessor(self.parent(index)[0])
 
     """
        Finds the predecessor of the element informed
@@ -109,16 +110,16 @@ class BinarySearchTree:
     """
     def predecessor(self, element):
         index, node = self.search(element, True, '>')
-        return self.__predecessor_recur(index)
+        return self.__predecessor(index)
 
     """
         Recursive function to compute successor
     """
-    def __successor_recur(self, index):
+    def __successor(self, index):
         if index % 2 == 0:
             return self.parent(index)
 
-        return self.__successor_recur(self.parent(index)[0])
+        return self.__successor(self.parent(index)[0])
 
     """
        Finds the successor of the element informed
@@ -126,12 +127,12 @@ class BinarySearchTree:
     """
     def successor(self, element):
         index, node = self.search(element, True)
-        return self.__successor_recur(index)
+        return self.__successor(index)
 
     """
         Recursive function to in-order traversal
     """
-    def __in_order_traversal(self, index, node, traversal=[]):
+    def __in_order_traversal(self, index, node, traversal):
         left_index, left_node = self.left(index)
 
         if left_node:
@@ -151,8 +152,14 @@ class BinarySearchTree:
     """
     def in_order_traversal(self):
         index, node = self.root()
-        return self.__in_order_traversal(index, node) if node else []
+        return self.__in_order_traversal(index, node, []) if node else []
 
+    """
+        Recursive function to delete
+        If the queried node has only right child, finds its successor and replaces with node
+        If the queried node has both or only left child, finds its predecessor and replaces with node
+        Do it until the end of the three is reached    
+    """
     def __delete(self, index, node):
         if node:
             left_index, left_node = self.left(index)
@@ -173,15 +180,14 @@ class BinarySearchTree:
         Deletes a node of the tree, if it is present
     """
     def delete(self, element):
-        print(self.__tree)
         index, node = self.search(element)
         self.__delete(index, node)
-        print(self.__tree)
+        print('delete node:', element, 'tree:', self.__tree)
 
     """
         Recursive function to compute rank operation
     """
-    def __rank(self, index, node, element, rank=[]):
+    def __rank(self, index, node, element, rank):
         if len(rank) >= element:
             return rank
 
@@ -205,12 +211,12 @@ class BinarySearchTree:
     """
     def rank(self, element):
         index, node = self.root()
-        return self.__rank(index, node, element) if node else []
+        return self.__rank(index, node, element, []) if node else []
 
     """
         Recursive function to compute selection operation
     """
-    def __selection(self, index, node, order_statistic, selection=[]):
+    def __selection(self, index, node, order_statistic, selection):
         if len(selection) >= order_statistic:
             return selection
 
@@ -234,7 +240,7 @@ class BinarySearchTree:
     def selection(self, order_statistic):
         index, node = self.root()
         if node:
-            selection = self.__selection(index, node, order_statistic)
+            selection = self.__selection(index, node, order_statistic, [])
             if len(selection) >= order_statistic:
                 return selection[order_statistic - 1]
 
@@ -265,9 +271,18 @@ print('successor of 2:', bst.successor(2))         # (1, 3)
 print('in order traversal=', bst.in_order_traversal())
 print('rank=', bst.rank(12))
 print('selection 10th order statistic=', bst.selection(10))
+print('deleting root')
 bst.delete(10)
 
-
+print('search 5:', bst.search(5))                  # (3, 5)
+print('tree height:', bst.tree_height())           # 2
+print('min element:', bst.min_element())           # 1
+print('max element:', bst.max_element())           # 5
+print('predecessor of 5:', bst.predecessor(5))     # (3, 5)
+print('successor of 2:', bst.successor(2))         # (1, 3)
+print('in order traversal=', bst.in_order_traversal())
+print('rank=', bst.rank(12))
+print('selection 10th order statistic=', bst.selection(10))
 
 
 
