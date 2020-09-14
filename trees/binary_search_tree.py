@@ -51,7 +51,7 @@ class BinarySearchTree:
     def search(self, element, insertion=False, element_comparator='>='):
         index, node = self.root()
 
-        while node and (insertion or node != element):
+        while node is not None and (insertion or node != element):
             if eval(str(element) + element_comparator + str(node)):
                 index, node = self.right(index)
             else:
@@ -74,9 +74,9 @@ class BinarySearchTree:
         index, node = self.root()
         min_node = node
 
-        while node:
+        while node is not None:
             index, node = self.left(index)
-            if node:
+            if node is not None:
                 min_node = node
 
         return min_node
@@ -88,9 +88,9 @@ class BinarySearchTree:
         index, node = self.root()
         max_node = node
 
-        while node:
+        while node is not None:
             index, node = self.right(index)
-            if node:
+            if node is not None:
                 max_node = node
 
         return max_node
@@ -98,11 +98,11 @@ class BinarySearchTree:
     """
        Recursive function to compute predecessor
     """
-    def __predecessor(self, index):
+    def __predecessor__(self, index):
         if index % 2 > 0:
             return self.parent(index)
 
-        return self.__predecessor(self.parent(index)[0])
+        return self.__predecessor__(self.parent(index)[0])
 
     """
        Finds the predecessor of the element informed
@@ -110,16 +110,16 @@ class BinarySearchTree:
     """
     def predecessor(self, element):
         index, node = self.search(element, True, '>')
-        return self.__predecessor(index)
+        return self.__predecessor__(index)
 
     """
         Recursive function to compute successor
     """
-    def __successor(self, index):
+    def __successor__(self, index):
         if index % 2 == 0:
             return self.parent(index)
 
-        return self.__successor(self.parent(index)[0])
+        return self.__successor__(self.parent(index)[0])
 
     """
        Finds the successor of the element informed
@@ -127,23 +127,23 @@ class BinarySearchTree:
     """
     def successor(self, element):
         index, node = self.search(element, True)
-        return self.__successor(index)
+        return self.__successor__(index)
 
     """
         Recursive function to in-order traversal
     """
-    def __in_order_traversal(self, index, node, traversal):
+    def __in_order_traversal__(self, index, node, traversal):
         left_index, left_node = self.left(index)
 
-        if left_node:
-            self.__in_order_traversal(left_index, left_node, traversal)
+        if left_node is not None:
+            self.__in_order_traversal__(left_index, left_node, traversal)
 
         traversal += [node]
 
         right_index, right_node = self.right(index)
 
-        if right_node:
-            self.__in_order_traversal(right_index, right_node, traversal)
+        if right_node is not None:
+            self.__in_order_traversal__(right_index, right_node, traversal)
 
         return traversal
 
@@ -152,7 +152,7 @@ class BinarySearchTree:
     """
     def in_order_traversal(self):
         index, node = self.root()
-        return self.__in_order_traversal(index, node, []) if node else []
+        return self.__in_order_traversal__(index, node, []) if node else []
 
     """
         Recursive function to delete
@@ -160,19 +160,19 @@ class BinarySearchTree:
         If the queried node has both or only left child, finds its predecessor and replaces with node
         Do it until the end of the three is reached    
     """
-    def __delete(self, index, node):
+    def __delete__(self, index, node):
         if node:
             left_index, left_node = self.left(index)
             right_index, right_node = self.right(index)
 
-            if right_node or left_node:
-                if right_node and not left_node:
+            if right_node is not None or left_node is not None:
+                if right_node is not None and left_node is None:
                     next_index, next_node = self.successor(node)
                 else:
                     next_index, next_node = self.predecessor(node)
 
                 self.__tree[index] = next_node
-                self.__delete(next_index, next_node)
+                self.__delete__(next_index, next_node)
             else:
                 self.__tree.pop(index)
 
@@ -181,28 +181,28 @@ class BinarySearchTree:
     """
     def delete(self, element):
         index, node = self.search(element)
-        self.__delete(index, node)
+        self.__delete__(index, node)
         print('delete node:', element, 'tree:', self.__tree)
 
     """
         Recursive function to compute rank operation
     """
-    def __rank(self, index, node, element, rank):
+    def __rank__(self, index, node, element, rank):
         if len(rank) >= element:
             return rank
 
         left_index, left_node = self.left(index)
 
-        if left_node:
-            self.__rank(left_index, left_node, element, rank)
+        if left_node is not None:
+            self.__rank__(left_index, left_node, element, rank)
 
         if node <= element:
             rank += [node]
 
         right_index, right_node = self.right(index)
 
-        if right_node:
-            self.__rank(right_index, right_node, element, rank)
+        if right_node is not None:
+            self.__rank__(right_index, right_node, element, rank)
 
         return rank
 
@@ -211,26 +211,26 @@ class BinarySearchTree:
     """
     def rank(self, element):
         index, node = self.root()
-        return self.__rank(index, node, element, []) if node else []
+        return self.__rank__(index, node, element, []) if node else []
 
     """
         Recursive function to compute selection operation
     """
-    def __selection(self, index, node, order_statistic, selection):
+    def __selection__(self, index, node, order_statistic, selection):
         if len(selection) >= order_statistic:
             return selection
 
         left_index, left_node = self.left(index)
 
-        if left_node:
-            self.__in_order_traversal(left_index, left_node, selection)
+        if left_node is not None:
+            self.__selection__(left_index, left_node, selection)
 
         selection += [node]
 
         right_index, right_node = self.right(index)
 
-        if right_node:
-            self.__in_order_traversal(right_index, right_node, selection)
+        if right_node is not None:
+            self.__selection__(right_index, right_node, selection)
 
         return selection
 
@@ -239,8 +239,8 @@ class BinarySearchTree:
     """
     def selection(self, order_statistic):
         index, node = self.root()
-        if node:
-            selection = self.__selection(index, node, order_statistic, [])
+        if node is not None:
+            selection = self.__selection__(index, node, order_statistic, [])
             if len(selection) >= order_statistic:
                 return selection[order_statistic - 1]
 

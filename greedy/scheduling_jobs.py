@@ -37,7 +37,7 @@ class JobDiff:
         self.diff = weight - length
 
     def __lt__(self, other):
-        return self.diff < other.diff or (self.diff == other.diff and self.weight > other.weight)
+        return self.diff > other.diff or (self.diff == other.diff and self.weight > other.weight)
 
     def __str__(self):
         return str((self.diff, self.weight, self.length))
@@ -49,7 +49,7 @@ class JobRatio:
         self.diff = weight / length
 
     def __lt__(self, other):
-        return self.diff > other.diff or (self.diff == other.diff and self.weight > other.weight) 
+        return self.diff > other.diff or (self.diff == other.diff and self.weight > other.weight)
 
     def __str__(self):
         return str((self.diff, self.weight, self.length))

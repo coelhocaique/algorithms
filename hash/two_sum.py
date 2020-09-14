@@ -1,4 +1,4 @@
-import sys
+import sys,datetime
 sys.path.append("..")
 from utils.file_reader import *
 
@@ -17,11 +17,10 @@ def two_sum():
         num_target_val = 0
 
         for t in range(-10000, 10001):
-            print(t)
             keys = hash_num.keys()
             for x in keys:
                 y = t - x
-                if y != x and y in keys:
+                if y != x and hash_num.get(y, None) is not None:
                     num_target_val+=1
                     break
 
@@ -30,5 +29,8 @@ def two_sum():
     return execute(get_data())
 
 
+start = datetime.datetime.now()
+print("start=", start)
 print(two_sum())
+print("end=", datetime.datetime.now() - start)
 # 427
