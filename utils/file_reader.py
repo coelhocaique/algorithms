@@ -12,6 +12,7 @@ class FilePath:
     TWO_SUM = '/2sum.txt'
     JOBS = '/jobs.txt'
     MST_PRIM = '/edges.txt'
+    CLUSTERING = '/clustering1.txt'
 
 
 def read_file(filename):
