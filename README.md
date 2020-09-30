@@ -23,3 +23,7 @@
 #### Greedy Algorithms, Minimum Spanning Trees and Dynamic Programming
 * [Scheduling Jobs](https://github.com/coelhocaique/algorithms/blob/master/greedy/scheduling_jobs.py) - O(n log n)
 * [Prim's Minimum Spanning Tree](https://github.com/coelhocaique/algorithms/blob/master/greedy/mst_prim.py) - O(m log n)
+* [Kruskal's Minimum Spanning Tree](https://github.com/coelhocaique/algorithms/blob/master/greedy/mst_kruskal.py) - O(m log n)
+* [Union Find by Rank and Path Compression](https://github.com/coelhocaique/algorithms/blob/master/greedy/union_find.py) - O(m log n)
+* [Clustering 1,](https://github.com/coelhocaique/algorithms/blob/master/greedy/clustering.py) [Clustering 2](https://github.com/coelhocaique/algorithms/blob/master/greedy/clustering_bit.py)- O(m log n)
+* [Huffman Coding](https://github.com/coelhocaique/algorithms/blob/master/greedy/huffman.py) - O(m log n)
