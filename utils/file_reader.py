@@ -14,6 +14,7 @@ class FilePath:
     MST_PRIM = '/edges.txt'
     CLUSTERING = '/clustering1.txt'
     CLUSTERING_BITS = '/clustering_bit.txt'
+    HUFFMAN_CODING = '/huffman.txt'
 
 
 def read_file(filename):
