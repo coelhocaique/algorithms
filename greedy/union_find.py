@@ -1,6 +1,10 @@
 import sys
 sys.path.append("..")
 
+"""
+    Implementation of Union-Find with path compression and Union by Rank
+"""
+
 
 class UnionFind:
 

@@ -1,20 +1,23 @@
-# In this programming problem you'll code up Prim's minimum spanning tree algorithm.
-# This file describes an undirected graph with integer edge costs. It has the format
-#
-# [number_of_nodes] [number_of_edges]
-# [one_node_of_edge_1] [other_node_of_edge_1] [edge_1_cost]
-# [one_node_of_edge_2] [other_node_of_edge_2] [edge_2_cost]
-#
-# You should NOT assume that edge costs are positive, nor should you assume that they are distinct.
-#
-# Your task is to run Prim's minimum spanning tree algorithm on this graph.
-# You should report the overall cost of a minimum spanning tree --- an integer, which may or may not be negative
-
 import sys
 sys.path.append("..")
 
+"""
+    In this programming problem you'll code up Prim's minimum spanning tree algorithm.
+    This file describes an undirected graph with integer edge costs. It has the format
+
+    [number_of_nodes] [number_of_edges]
+    [one_node_of_edge_1] [other_node_of_edge_1] [edge_1_cost]
+    [one_node_of_edge_2] [other_node_of_edge_2] [edge_2_cost]
+
+    You should NOT assume that edge costs are positive, nor should you assume that they are distinct.
+
+    Your task is to run Prim's minimum spanning tree algorithm on this graph.
+    You should report the overall cost of a minimum spanning tree --- an integer, which may or may not be negative
+"""
+
 from queue import PriorityQueue
 from utils.file_reader import *
+
 
 def get_data():
 
