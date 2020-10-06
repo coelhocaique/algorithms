@@ -15,6 +15,7 @@ class FilePath:
     CLUSTERING = '/clustering1.txt'
     CLUSTERING_BITS = '/clustering_bit.txt'
     HUFFMAN_CODING = '/huffman.txt'
+    MWIS = '/mwis.txt'
 
 
 def read_file(filename):

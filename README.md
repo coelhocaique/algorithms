@@ -27,3 +27,4 @@
 * [Union Find by Rank and Path Compression](https://github.com/coelhocaique/algorithms/blob/master/greedy/union_find.py) - O(m log n)
 * [Clustering 1,](https://github.com/coelhocaique/algorithms/blob/master/greedy/clustering.py) [Clustering 2](https://github.com/coelhocaique/algorithms/blob/master/greedy/clustering_bit.py)- O(m log n)
 * [Huffman Coding](https://github.com/coelhocaique/algorithms/blob/master/greedy/huffman.py) - O(m log n)
+* [Maximum Weight Independent Set](https://github.com/coelhocaique/algorithms/blob/master/dp/mwis.py) - O(m log n)
