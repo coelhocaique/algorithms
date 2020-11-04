@@ -28,3 +28,7 @@
 * [Clustering 1,](https://github.com/coelhocaique/algorithms/blob/master/greedy/clustering.py) [Clustering 2](https://github.com/coelhocaique/algorithms/blob/master/greedy/clustering_bit.py)- O(m log n)
 * [Huffman Coding](https://github.com/coelhocaique/algorithms/blob/master/greedy/huffman.py) - O(m log n)
 * [Maximum Weight Independent Set](https://github.com/coelhocaique/algorithms/blob/master/dp/mwis.py) - O(n)
+* [Knapsack Max Capacity](https://github.com/coelhocaique/algorithms/blob/master/dp/knapsack.py) - O(mn)
+
+#### Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
+* [Floyd-Warshall Shortest Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/floyd_warshall.py) - O(n^3)

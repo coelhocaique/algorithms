@@ -1,6 +1,4 @@
-import os
-import re
-
+import os, re
 
 class FilePath:
     INVERSIONS = '/inversions.txt'
@@ -18,6 +16,9 @@ class FilePath:
     MWIS = '/mwis.txt'
     KNAPSACK1 = '/knapsack1.txt'
     KNAPSACK2 = '/knapsack2.txt'
+    ALL_PAIRS_SHORTEST_PATH_1 = '/all_pairs_shortest_path_1.txt'
+    ALL_PAIRS_SHORTEST_PATH_2 = '/all_pairs_shortest_path_2.txt'
+    ALL_PAIRS_SHORTEST_PATH_3 = '/all_pairs_shortest_path_3.txt'
 
 
 def read_file(filename):
