@@ -27,7 +27,7 @@ def get_data(file_path):
 
     return g, num_nodes
 
-def floyd_warshall_all_pairs_shortest_path(g, n):
+def floyd_warshall(g, n):
 
     def initialize_cache():
         cache = []
@@ -62,7 +62,7 @@ def floyd_warshall_all_pairs_shortest_path(g, n):
 
     def get_shortest_path(cache):
         if not has_negative_cost_cycle(cache):
-            shortest_path = (0, 0, sys.maxsize)
+            shortest_path = (0, 0, inf)
             for i in range(1, n+1):
                 for j in range(1, n+1):
                     cur_val = cache[i][j]
@@ -87,7 +87,7 @@ def shortest_shortest_path():
     for g in data:
         start = time.time()
         print('dataset %d start time %s' % (index, datetime.datetime.now()))
-        result = floyd_warshall_all_pairs_shortest_path(g[0], g[1])
+        result = floyd_warshall(g[0], g[1])
         print('dataset %d processed in %s seconds' % (index, (time.time() - start)))
 
         if result is not None:
@@ -104,3 +104,5 @@ def shortest_shortest_path():
 
 
 print('Floyd-Warshall shortest shortest path: ', shortest_shortest_path())
+
+#-19
