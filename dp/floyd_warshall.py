@@ -89,6 +89,7 @@ def shortest_shortest_path():
         print('dataset %d start time %s' % (index, datetime.datetime.now()))
         result = floyd_warshall(g[0], g[1])
         print('dataset %d processed in %s seconds' % (index, (time.time() - start)))
+        print('result =', result)
 
         if result is not None:
             has_result = True

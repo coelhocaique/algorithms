@@ -12,47 +12,47 @@ from math import inf
 """
 
 class BellmanFord:
+
     def __init__(self, graph, vertices, source):
         self.vertices = vertices
         self.graph = graph
         self.s = source
-        self.cache = [[inf for _ in range(vertices+1)] for _ in range(vertices)]
-        self.sp = dict()
+        self.cache = [[inf for _ in range(vertices+1)]]
+        self.has_negative_cost_cycle = False
+
+
+    def __optimize_space__(self, iteration_cache_results):
+        if len(self.cache) == 1:
+            self.cache.append(iteration_cache_results)
+        else:
+            self.cache[0] = self.cache[1]
+            self.cache[1] = iteration_cache_results
+
+    def __check_negative_cost_cycle__(self):
+        self.has_negative_cost_cycle = self.cache[-2] != self.cache[-1]
+        return self.has_negative_cost_cycle
 
     def compute_shortest_path(self):
         self.cache[0][self.s] = 0
 
-        for i in range(1, self.vertices-1):
+        for i in range(1, self.vertices+1):
+            iteration_cache_results = [self.cache[-1][0]]
+
             for v in range(1, self.vertices+1):
-                costs = self.graph.get((i, v), None)
-                if costs is not None:
-                    self.cache[i][v] = min(self.cache[i-1][v], self.cache[i-1][i] + min(costs))
-                else:
-                    self.cache[i][v] = self.cache[i-1][v]
+                min_edge = inf
+                incoming_edges = self.graph.get(v, [])
 
+                if len(incoming_edges) > 0:
+                    min_edge = min(self.cache[-1][w[0]] + w[1] for w in incoming_edges)
 
-        for v in range(1, self.vertices+1):
-            self.sp[(self.s, v)] = self.cache[self.vertices-2][v]
+                current_min_cost = min(self.cache[-1][v], min_edge)
 
-        return self.sp
+                iteration_cache_results.append(current_min_cost)
 
+            self.__optimize_space__(iteration_cache_results)
+
+        return self.__check_negative_cost_cycle__()
 
     def shortest_path(self, v):
-        return self.cache[self.vertices-2][v] if v <= self.vertices else None
+        return self.cache[-2][v] if v <= self.vertices else None
 
-
-"""
-    graph = {
-        (1, 2): [5],
-        (1, 3): [4],
-        (2, 3): [2],
-        (2, 4): [3],
-        (3, 1): [1],
-        (3, 2): [1]
-    }
-    
-    bf = BellmanFord(graph=graph, vertices=4, source=1)
-    
-    print(bf.compute_shortest_path())
-
-"""

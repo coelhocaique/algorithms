@@ -31,4 +31,6 @@
 * [Knapsack Max Capacity](https://github.com/coelhocaique/algorithms/blob/master/dp/knapsack.py) - O(mn)
 
 #### Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
+* [Bellman-Ford Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/bellman_ford.py) - O(mn)
 * [Floyd-Warshall Shortest Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/floyd_warshall.py) - O(n^3)
+* [Johnson's Shortest Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/johnson.py) - O(mn log n)
