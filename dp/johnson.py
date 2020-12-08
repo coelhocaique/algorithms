@@ -111,7 +111,7 @@ def johnson(incoming_edges_g, outcoming_edges_g, n):
     return shortest_path
 
 def shortest_shortest_path():
-    data = [get_data(FilePath.ALL_PAIRS_SHORTEST_PATH_LARGE)] #get_data(FilePath.ALL_PAIRS_SHORTEST_PATH_2), get_data(FilePath.ALL_PAIRS_SHORTEST_PATH_3)]
+    data = [get_data(FilePath.ALL_PAIRS_SHORTEST_PATH_1), get_data(FilePath.ALL_PAIRS_SHORTEST_PATH_2), get_data(FilePath.ALL_PAIRS_SHORTEST_PATH_3)]
     has_result = False
     shortest_path = None
     index = 1

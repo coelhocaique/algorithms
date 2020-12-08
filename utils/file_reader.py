@@ -19,6 +19,10 @@ class FilePath:
     ALL_PAIRS_SHORTEST_PATH_1 = '/all_pairs_shortest_path_1.txt'
     ALL_PAIRS_SHORTEST_PATH_2 = '/all_pairs_shortest_path_2.txt'
     ALL_PAIRS_SHORTEST_PATH_3 = '/all_pairs_shortest_path_3.txt'
+    ALL_PAIRS_SHORTEST_PATH_LARGE = '/all_pairs_shortest_path_large.txt'
+    ALL_PAIRS_SHORTEST_PATH_4 = '/all_pairs_shortest_path_4.txt'
+    TSP = '/tsp.txt'
+    TSP_HEURISTIC = '/tsp_heuristic.txt'
 
 
 def read_file(filename):
