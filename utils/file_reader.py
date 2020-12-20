@@ -23,7 +23,13 @@ class FilePath:
     ALL_PAIRS_SHORTEST_PATH_4 = '/all_pairs_shortest_path_4.txt'
     TSP = '/tsp.txt'
     TSP_HEURISTIC = '/tsp_heuristic.txt'
-
+    TWO_SAT_1 = '/2sat1.txt'
+    TWO_SAT_2 = '/2sat2.txt'
+    TWO_SAT_3 = '/2sat3.txt'
+    TWO_SAT_4 = '/2sat4.txt'
+    TWO_SAT_5 = '/2sat5.txt'
+    TWO_SAT_6 = '/2sat6.txt'
+    TWO_SAT = '/2sat.txt'
 
 def read_file(filename):
     f = open(os.path.abspath('../data') + filename, 'r')
