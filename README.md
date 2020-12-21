@@ -34,3 +34,6 @@
 * [Bellman-Ford Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/bellman_ford.py) - O(mn)
 * [Floyd-Warshall Shortest Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/floyd_warshall.py) - O(n^3)
 * [Johnson's Shortest Shortest Path](https://github.com/coelhocaique/algorithms/blob/master/dp/johnson.py) - O(mn log n)
+* [Traveling Salesman Problem](https://github.com/coelhocaique/algorithms/blob/master/np/tsp_bitmask.py) - NP
+* [Traveling Salesman Problem Heuristic](https://github.com/coelhocaique/algorithms/blob/master/np/tsp_heuristic.py) - NP
+* [2-Satisfiability](https://github.com/coelhocaique/algorithms/blob/master/np/2sat.py) - NP 
